@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Doff it, sqwuiah?</title>
+    <!--The google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond|IM+Fell+DW+Pica" rel="stylesheet">
+    <script src="/doff/doff.js"></script>
+    <script src="/html/underscore-min.js"></script>
+    <link rel="stylesheet" href='/html/main.css'>
+
+    <style>
+        .textButton {
+            display: inline-block;
+            cursor: pointer;
+            font-family: IM Fell DW Pica, cursive;
+            font-size: xx-large;
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="question" style="font-family:Cormorant Garamond, cursive; font-size: xx-large; margin-bottom:30px"></div>
+    <div class="textButton" onclick="generateSentence()" style=" margin-right:40px">Doff it</div>
+    <div class="textButton" onclick="generateSentence()">Do not doff</div>
+</body>
+</html>
