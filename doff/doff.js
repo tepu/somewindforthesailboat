@@ -242,6 +242,20 @@ var text = [
     }
 ];
 
+function disableButton (elementID) {
+    var element = document.getElementById(elementID);
+    element.style.opacity = 0;
+    element.classList.remove('clickable');
+    element.onclick = '';
+}
+
+function enableButton (elementID) {
+    var element = document.getElementById(elementID);
+    element.style.opacity = 1;
+    element.classList.add('clickable');
+    element.onclick = updateText;
+}
+
 var actNum = 0;
 var progress = 0;
 var endStateCounter=0;
@@ -272,13 +286,13 @@ function updateText () {
 
     if (act.showDoNothing) {
         act.showDoNothing = false;
-        document.getElementById('doNothing').style.opacity = 1;
+        enableButton('doNothing');
     }
 
     if (act.hideDoff) {
         act.hideDoff = false;
-        document.getElementById('doff').style.opacity = 0;
-        document.getElementById('doNotDoff').style.opacity = 0;
+        disableButton('doff');
+        disableButton('doNotDoff');
     }
 
     // Generate a new question that is different from the current question

@@ -10,10 +10,17 @@
     <link rel="stylesheet" href='/html/main.css'>
 
     <style>
+        body {
+            cursor: default
+        }
+        .clickable {
+            cursor: pointer !important;
+        }
         .textButton {
             display: inline-block;
-            cursor: pointer;
             margin-right:40px;
+
+            cursor: default;
 
             font-family: IM Fell DW Pica, cursive;
             font-size: xx-large;
@@ -30,8 +37,8 @@
 <body>
     <div id="progress" style="font-family:Cormorant Garamond, cursive; font-size: xx-large; margin-bottom:30px">0/20</div>
     <div id="question" style="font-family:Cormorant Garamond, cursive; font-size: xx-large; margin-bottom:30px"></div>
-    <div id="doff"      class="textButton" onclick="updateText()">Doff it</div>
-    <div id="doNotDoff" class="textButton" onclick="updateText()">Do not doff</div>
-    <div id="doNothing" class="textButton" onclick="updateText()" style="opacity:0">Do nothing</div>
+    <div id="doff"      class="textButton clickable" onclick="updateText()">Doff it</div>
+    <div id="doNotDoff" class="textButton clickable" onclick="updateText()">Do not doff</div>
+    <div id="doNothing" class="textButton" style="opacity:0">Do nothing</div>
 </body>
 </html>
