@@ -9,6 +9,7 @@ var normalEncounter = [
     "you accidentally stare too long at"
 ];
 var normalPerson = [
+    "a governess pushing a parambulator",
     "an episcopal bishop",
     "a soldier on leave",
     "a lively costermonger",
@@ -26,7 +27,7 @@ var aftermathEncounter = [
     "you fight past",
     "you bump against"
 ];
-var aftermathPerson= [
+var aftermathPerson = [
     "faceless bodies, gawking",
     "a blur of hollow faces",
     "a suffocating grey fog",
@@ -42,7 +43,7 @@ var text = [
             "on the Sabbath",
             "while hunting in Nantes",
             "on your way to tiffin",
-            "During the first bowl of the over (at Wembley)",
+            "during the first bowl of the over (at Wembley)",
             "while carrying a cane and volume of Proust",
             "ascending the steps of parliment",
             "while reaching for your cigarette case",
@@ -53,8 +54,10 @@ var text = [
             "while finding your seat at the opera",
             "during the national anthem",
             "during a lecture on Ovid",
-            "onboard a Brunel's Great Eastern steamer",
-            "while smoking at the club"
+            "onboard Brunel's Great Eastern steamer",
+            "while smoking at the club",
+            "during your daily constitutional",
+            "while smoking a cheroot"
         ],
         encounter: [
             "you pass",
@@ -75,7 +78,11 @@ var text = [
             "two journalists, having a conversation",
             "a bishop in a mitre",
             "a line of convicts",
-            "a shoeshining waif"
+            "a knot of saucer-eyed waifs",
+            "a scullery maid, shouting 'gardyloo!'",
+            "a rather fetching strumpet",
+            "the viscount in a sedan chair",
+            "a sailor, eating fish heads and tails"
         ]
     }, {
         counter: 6,
@@ -107,8 +114,10 @@ var text = [
             "a prominent local fisherman",
             "a procession of mourners",
             "a gang of tattooed stevedors",
+            "a porter-bellied pintman",
             "a very inebriated funicular repairman",
-            "Mr. Tronk, enjoying the morning air"
+            "Mr. Tronk, enjoying the morning air",
+            "shriftless churls gathered around a hurdy-gurdy"
         ]
     }, {
         counter: 9,
@@ -134,12 +143,13 @@ var text = [
             "you exchange a knowing glance with",
             "you reach for the same umbrella as",
             "you accidentally stare too long at",
-            "you bump into"
+            "you bump into",
+            "you make eyes at"
         ],
         person: [
             "that roguish charmer Ernest, smelling of the sea",
-            "local fisherman Ernest Tronk",
-            "a prominent local fisherman",
+            "handsome local fisherman Ernest Tronk",
+            "prominent local fisherman Ernest Tronk",
             "the salty old sea dog Ernest Tronk",
             "mariner extraordinare, Ernest Tronk",
             "a festive Ernest Tronk, dancing a reel",
@@ -147,28 +157,29 @@ var text = [
             "one Ernest Tronk, a rapscallion of a herring trawler",
             "Mr. Tronk, enjoying the morning air",
             "that jocund fellow Ernest, up to his old tricks",
-            "paragon of bonhomie Ernest Tronk, laughing his salty laugh"
+            "paragon of bonhomie Ernest Tronk, laughing his salty laugh",
+            "Ernest Tronk playing timeless shanties on his concertina"
         ]
     }, {
         counter  : 1,
-        preamble : ["arriving late for your funicular"],
+        preamble : ["arriving a minute too late for your funicular"],
         encounter: normalEncounter,
         person   : normalPerson
     }, {
         counter  : 1,
-        preamble : ["reaching the funicular just as the doors close"],
+        preamble : ["reaching the platform just after the doors close"],
         encounter: normalEncounter,
         person   : normalPerson
     }, {
         counter  : 1,
-        preamble : ["as everyone on the platform begins to shout"],
+        preamble : ["stuck on the platform as everyone on begins to shout"],
         encounter: ["you see"],
-        person   : ["Ernest Tronk"]
+        person   : ["Ernest Tronk in a crowded funicular"]
     }, {
         counter  : 1,
         preamble : ["as the cable on the funicular snaps"],
         encounter: ["you see"],
-        person   : ["Ernest Tronk"]
+        person   : ["Ernest Tronk in a crowded funicular"]
     }, {
         counter  : 1,
         preamble : ["as the brakes on the funicular fail"],
@@ -237,7 +248,7 @@ var text = [
             "the abyss",
             "the silent, enveloping darkness",
             "the hollow men, rats feet over broken glass in a dry cellar",
-            "a vacant, unfeeling god"
+            "a silent, unfeeling god"
         ]
     }
 ];
@@ -259,10 +270,21 @@ function enableButton (elementID) {
 var actNum = 0;
 var progress = 0;
 var endStateCounter=0;
+var lastClick = 0;
+var delay = 500;
 function updateText () {
+    // Don't allow clicking more than once a second
+    // otherwise mucksavage bogmen click too fast and miss the game
+    var time = Date.now();
+    if (time - lastClick < delay) {
+        return;
+    }
+    lastClick = time;
+
     var act = text[actNum];
 
     if (!act) {
+        delay = 0;
         endStateCounter++;
         document.getElementById('question').textContent =
             (endStateCounter % 2) ? "You wake up" : "You go to sleep";
