@@ -1,13 +1,3 @@
-var normalEncounter = [
-    "you pass",
-    "you see",
-    "you are greeted by",
-    "you chance across",
-    "you are winked at by",
-    "you exchange a knowing glance with",
-    "you reach for the same umbrella as",
-    "you accidentally stare too long at"
-];
 var normalPerson = [
     "a governess pushing a parambulator",
     "an episcopal bishop",
@@ -16,9 +6,30 @@ var normalPerson = [
     "a constable making their rounds",
     "a gentleman, with no hat",
     "a woman in a wide-brimmed hat",
+    "Her Majesty",
     "a prominent local politician",
-    "two journalists, having a conversation"
+    "two journalists, having a conversation",
+    "a bishop in a mitre",
+    "a line of convicts",
+    "a knot of saucer-eyed waifs",
+    "a scullery maid, shouting 'gardyloo!'",
+    "a rather fetching strumpet",
+    "the viscount in a sedan chair",
+    "a sailor, eating fish heads and tails"
 ];
+var normalEncounter = [
+    "you pass",
+    "you see",
+    "you are greeted by",
+    "you chance across",
+    "you are noticed by"
+    ];
+var weirdEncounter = normalEncounter.concat([
+    "you are winked at by",
+    "you exchange a knowing glance with",
+    "you reach for the same umbrella as",
+    "you accidentally stare too long at"
+]);
 var aftermathEncounter = [
     "you are dimly aware of",
     "you take no notice of",
@@ -27,14 +38,15 @@ var aftermathEncounter = [
     "you fight past",
     "you bump against"
 ];
-var aftermathPerson = [
-    "faceless bodies, gawking",
+var aftermathAtHomePerson = [
     "a blur of hollow faces",
     "a suffocating grey fog",
-    "a sudden stillness",
-    "the gathering crowds",
-    "policemen shouting loudly"
+    "a sudden stillness"
 ];
+var aftermathPerson = aftermathAtHomePerson.concat([
+    "the gathering crowds",
+    "policemen shouting loudly",
+    "faceless bodies, gawking"]);
 
 var text = [
     {
@@ -59,31 +71,8 @@ var text = [
             "during your daily constitutional",
             "while smoking a cheroot"
         ],
-        encounter: [
-            "you pass",
-            "you see",
-            "you are greeted by",
-            "you chance across",
-            "you are noticed by"
-        ],
-        person: [
-            "an episcopal bishop",
-            "a soldier on leave",
-            "a lively costermonger",
-            "a constable making their rounds",
-            "a gentleman, with no hat",
-            "a woman in a wide-brimmed hat",
-            "Her Majesty",
-            "a prominent local politician",
-            "two journalists, having a conversation",
-            "a bishop in a mitre",
-            "a line of convicts",
-            "a knot of saucer-eyed waifs",
-            "a scullery maid, shouting 'gardyloo!'",
-            "a rather fetching strumpet",
-            "the viscount in a sedan chair",
-            "a sailor, eating fish heads and tails"
-        ]
+        encounter: normalEncounter,
+        person: normalPerson
     }, {
         counter: 6,
         showDoNothing: true,
@@ -96,16 +85,7 @@ var text = [
             "in a crowded funicular car",
             "on the funicular platform"
         ],
-        encounter: [
-            "you pass",
-            "you see",
-            "you are greeted by",
-            "you chance across",
-            "you are winked at by",
-            "you exchange a knowing glance with",
-            "you reach for the same umbrella as",
-            "you accidentally stare too long at"
-        ],
+        encounter: weirdEncounter,
         person: [
             "Her Majesty",
             "il principe de Monaco",
@@ -163,12 +143,12 @@ var text = [
     }, {
         counter  : 1,
         preamble : ["arriving a minute too late for your funicular"],
-        encounter: normalEncounter,
+        encounter: weirdEncounter,
         person   : normalPerson
     }, {
         counter  : 1,
         preamble : ["reaching the platform just after the doors close"],
-        encounter: normalEncounter,
+        encounter: weirdEncounter,
         person   : normalPerson
     }, {
         counter  : 1,
@@ -214,7 +194,7 @@ var text = [
         counter  : 1,
         preamble : ["unsure how you got home"],
         encounter: aftermathEncounter,
-        person   : aftermathPerson
+        person   : aftermathAtHomePerson
     }, {    // funeral
         counter: 7,
         hideDoff: true,
@@ -337,7 +317,7 @@ var generateSentence = function (act) {
         });
 };
 
-document.addEventListener("DOMContentLoaded", function(event) {
+document.addEventListener("DOMContentLoaded", function () {
     updateText();
 });
 
