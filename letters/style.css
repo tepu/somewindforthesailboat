@@ -1,0 +1,18 @@
+p {text-indent: 40px;}
+p.noIndent {text-indent: 0;}
+.unknown,
+.annotation {
+    color: grey;
+    font-style: italic
+}
+.column {
+    display: inline-block;
+    max-width: 675px;
+    text-align: left;
+}
+.firstParagraph:first-letter { font-size: 1.5em; }
+.firstParagraph:first-line { line-height: 1em; }
+.description {
+    margin-bottom: 10px;
+}
+/*<link href="https://fonts.googleapis.com/css?family=Parisienne" rel="stylesheet"> ; font-family: 'Parisienne', serif; font-size: 20pt*/
