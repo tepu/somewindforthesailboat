@@ -47,7 +47,25 @@ var aftermathPerson = aftermathAtHomePerson.concat([
     "the gathering crowds",
     "policemen shouting loudly",
     "faceless bodies, gawking"]);
-
+var sadEncounter = [
+    "you stare vacantly at",
+    "you mumble something you immediately forget to",
+    "you try to ignore",
+    "you turn around to avoid the haunted eyes of",
+    "you do not notice",
+    "you think of"
+];
+var sadPerson = [
+    "the elder Mr. Tronk",
+    "Ernest's mother",
+    "one of Ernest's sisters",
+    "an endless stream of strangers",
+    "the formless shadows",
+    "the abyss",
+    "the silent, enveloping darkness",
+    "the hollow men, rats feet over broken glass in a dry cellar",
+    "a silent, unfeeling god"
+];
 var text = [
     {
         counter: 6,
@@ -112,7 +130,10 @@ var text = [
             "in a crowded funicular",
             "in an empty funicular",
             "at the funicular platform",
-            "in a tavern"
+            "in a tavern",
+            "while doffing your hat",
+            "while visiting the shipyard after-hours",
+            "during the funicular's slow descent"
         ],
         encounter: [
             "you smile at",
@@ -124,7 +145,9 @@ var text = [
             "you reach for the same umbrella as",
             "you accidentally stare too long at",
             "you bump into",
-            "you make eyes at"
+            "you make eyes at",
+            "you jovially rib"
+
         ],
         person: [
             "that roguish charmer Ernest, smelling of the sea",
@@ -138,7 +161,7 @@ var text = [
             "Mr. Tronk, enjoying the morning air",
             "that jocund fellow Ernest, up to his old tricks",
             "paragon of bonhomie Ernest Tronk, laughing his salty laugh",
-            "Ernest Tronk playing timeless shanties on his concertina"
+            "Ernest Tronk, playing timeless shanties on his concertina"
         ]
     }, {
         counter  : 1,
@@ -154,12 +177,12 @@ var text = [
         counter  : 1,
         preamble : ["stuck on the platform as everyone on begins to shout"],
         encounter: ["you see"],
-        person   : ["Ernest Tronk in a crowded funicular"]
+        person   : ["Ernest Tronk in the crowded funicular"]
     }, {
         counter  : 1,
         preamble : ["as the cable on the funicular snaps"],
         encounter: ["you see"],
-        person   : ["Ernest Tronk in a crowded funicular"]
+        person   : ["Ernest Tronk in the crowded funicular"]
     }, {
         counter  : 1,
         preamble : ["as the brakes on the funicular fail"],
@@ -187,7 +210,7 @@ var text = [
         person   : aftermathPerson
     }, {
         counter  : 1,
-        preamble : ["jumping over the barricade"],
+        preamble : ["jumping over the police barricade"],
         encounter: aftermathEncounter,
         person   : aftermathPerson
     }, {
@@ -195,13 +218,17 @@ var text = [
         preamble : ["unsure how you got home"],
         encounter: aftermathEncounter,
         person   : aftermathAtHomePerson
+    }, {
+        counter  : 1,
+        hideDoff: true,
+        preamble : ["as the mayor declares a day of mourning"],
+        encounter: sadEncounter,
+        person   : sadPerson
     }, {    // funeral
         counter: 7,
-        hideDoff: true,
         preamble : [
             "at the funeral",
             "after the funeral",
-            "as the mayor declares a day of mourning",
             "walking alone at the wharf",
             "riding to work in the new funicular",
             "eating cold food",
@@ -211,25 +238,8 @@ var text = [
             "looking at the cracked skin on your hands",
             "you go to bed early lest"
         ],
-        encounter: [
-            "you stare vacantly at",
-            "you mumble something you immediately forget to",
-            "you try to ignore",
-            "you turn around to avoid the haunted eyes of",
-            "you do not notice",
-            "you think of"
-        ],
-        person: [
-            "the elder Mr. Tronk",
-            "Ernest's mother",
-            "one of Ernest's sisters",
-            "an endless stream of strangers",
-            "the formless shadows",
-            "the abyss",
-            "the silent, enveloping darkness",
-            "the hollow men, rats feet over broken glass in a dry cellar",
-            "a silent, unfeeling god"
-        ]
+        encounter: sadEncounter,
+        person: sadPerson
     }
 ];
 
